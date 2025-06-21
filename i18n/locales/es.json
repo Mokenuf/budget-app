@@ -1,0 +1,26 @@
+{
+  "app": {
+    "dashboard": {
+      "expenses": "Gastos",
+      "incomes": "Ingresos",
+      "netSavings": "Ahorro"
+    },
+    "header": {
+      "title": "Budget Tool"
+    },
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "expenses": "Gastos",
+      "incomes": "Ingresos"
+    }
+  },
+  "expenses": {
+    "title": "Gastos"
+  },
+  "index": {
+    "title": "Dashboard"
+  },
+  "incomes": {
+    "title": "Ingresos"
+  }
+}
