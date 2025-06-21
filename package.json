@@ -11,7 +11,8 @@
     "lint:prettier": "prettier . --check",
     "lint:fix": "eslint . --fix && prettier --write --list-different .",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "prepare": "husky"
   },
   "dependencies": {
     "@nuxt/eslint": "^1.4.1",
@@ -28,6 +29,7 @@
     "@pinia/nuxt": "^0.11.1",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.0",
+    "husky": "^9.1.7",
     "prettier": "^3.5.3"
   }
 }
