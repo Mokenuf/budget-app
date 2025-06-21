@@ -1,10 +1,10 @@
-interface IParser<T> {
+interface Parser<T> {
   parse(entity: T): T
   parseMultiple(entities: T[]): T[]
   populate(entity: any): void
 }
 
-export default abstract class BaseEntity<T> implements IParser<T> {
+export default abstract class BaseEntity<T> implements Parser<T> {
   id?: number | string
   createdAt?: Date
   updatedAt?: Date

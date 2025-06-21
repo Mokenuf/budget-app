@@ -8,12 +8,10 @@
       />
 
       <main
-        class="transition-all duration-300 ease-in-out h-full mt-4"
+        class="transition-all duration-300 ease-in-out w-full mt-4 px-10"
         :class="{ 'ml-64': isSidebarOpen }"
       >
-        <UContainer>
-          <slot />
-        </UContainer>
+        <slot />
       </main>
     </div>
   </div>
