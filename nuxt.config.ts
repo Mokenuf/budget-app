@@ -7,11 +7,11 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@pinia/nuxt',
     '@nuxtjs/i18n',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
   ],
   i18n: {
     bundle: {
-      optimizeTranslationDirective: false
-    }
-  }
+      optimizeTranslationDirective: false,
+    },
+  },
 })
