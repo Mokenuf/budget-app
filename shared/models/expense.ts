@@ -13,7 +13,7 @@ export default class Expense extends BaseEntity<Expense> {
     return new Expense(e)
   }
 
-  populate(expense: any) {
+  populate(expense: Expense) {
     this.amount = expense.amount
     this.description = expense.description
     this.name = expense.name

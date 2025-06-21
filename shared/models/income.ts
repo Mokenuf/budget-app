@@ -12,7 +12,7 @@ export default class Income extends BaseEntity<Income> {
     return new Income(e)
   }
 
-  populate(income: any) {
+  populate(income: Income) {
     this.amount = income.amount
     this.description = income.description
     this.name = income.name
