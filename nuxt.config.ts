@@ -1,5 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: 'Budget Tool',
+      meta: [{ name: 'description', content: 'Budget Tool' }],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    },
+  },
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
   future: {
@@ -12,7 +19,10 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
   ],
+  css: ['~/assets/css/main.css'],
   i18n: {
+    defaultLocale: 'es',
+    locales: [{ code: 'es', name: 'Español', file: 'es.json' }],
     bundle: {
       optimizeTranslationDirective: false,
     },
