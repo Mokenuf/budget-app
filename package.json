@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "commit": "cz",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "lint": "npm run lint:eslint && npm run lint:prettier",
@@ -27,9 +28,16 @@
     "@nuxtjs/i18n": "^9.5.5",
     "@nuxtjs/tailwindcss": "^7.0.0-beta.0",
     "@pinia/nuxt": "^0.11.1",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.0",
     "husky": "^9.1.7",
     "prettier": "^3.5.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
