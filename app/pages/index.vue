@@ -1,6 +1,8 @@
 <template>
   <UContainer>
-    <span class="text-2xl font-bold">{{ appConfig.title }}</span>
+    <span class="text-2xl font-bold"
+      >{{ appConfig.title }} | {{ $t('index.title') }}</span
+    >
   </UContainer>
 </template>
 
