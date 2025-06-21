@@ -6,6 +6,12 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/ui',
     '@pinia/nuxt',
-    '@nuxtjs/i18n'
-  ]
+    '@nuxtjs/i18n',
+    '@nuxtjs/tailwindcss'
+  ],
+  i18n: {
+    bundle: {
+      optimizeTranslationDirective: false
+    }
+  }
 })
