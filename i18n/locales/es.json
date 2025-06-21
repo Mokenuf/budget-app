@@ -1,5 +1,21 @@
 {
+  "app": {
+    "header": {
+      "title": "Budget Tool"
+    },
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "expenses": "Gastos",
+      "incomes": "Ingresos"
+    }
+  },
+  "expenses": {
+    "title": "Gastos"
+  },
   "index": {
     "title": "Presupuesto"
+  },
+  "incomes": {
+    "title": "Ingresos"
   }
 }
