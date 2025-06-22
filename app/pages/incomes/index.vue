@@ -2,13 +2,9 @@
   <div>
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-2xl font-bold">
-        {{ $t('pages.incomes.index.title') }}
+        {{ title }}
       </h2>
-      <UButton
-        icon="i-heroicons-plus"
-        :label="$t('pages.incomes.index.add')"
-        :to="$localePath('incomes-add')"
-      />
+      <UButton icon="i-heroicons-plus" :label="addLabel" :to="addRoute" />
     </div>
     <BaseTable
       :rows="MOCK_INCOMES"
@@ -26,8 +22,8 @@ import type { TableColumn } from '@nuxt/ui'
 import type Income from '#shared/models/income'
 import { MOCK_INCOMES } from '../../../mock-data'
 
-const localePath = useLocalePath()
 const { t } = useI18n()
+const { title, addLabel, addRoute, onEdit, onDelete } = useCRUDL('incomes')
 
 const actions: ActionKey[] = ['edit', 'delete']
 
@@ -49,12 +45,4 @@ const columns: TableColumn<Income>[] = [
     header: t('pages.incomes.index.description'),
   },
 ]
-
-function onEdit(id: string) {
-  navigateTo(localePath({ name: 'incomes-id-edit', params: { id } }))
-}
-
-function onDelete(id: string) {
-  console.log('delete', id)
-}
 </script>
