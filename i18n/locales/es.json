@@ -1,7 +1,7 @@
 {
   "app": {
     "dashboard": {
-      "expenses": "Gastos",
+      "expenses": "Expensas",
       "incomes": "Ingresos",
       "netSavings": "Ahorro"
     },
@@ -32,7 +32,7 @@
     },
     "sidebar": {
       "dashboard": "Dashboard",
-      "expenses": "Gastos",
+      "expenses": "Expensas",
       "incomes": "Ingresos"
     }
   },
@@ -58,7 +58,7 @@
         "description": "Descripción",
         "id": "ID",
         "name": "Nombre",
-        "title": "Gastos"
+        "title": "Expensas"
       }
     },
     "index": {
