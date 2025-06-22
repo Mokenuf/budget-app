@@ -27,8 +27,8 @@
 </template>
 
 <script setup lang="ts">
-import type Expense from '~~/shared/models/expense'
-import type Income from '~~/shared/models/income'
+import type Expense from '#shared/models/expense'
+import type Income from '#shared/models/income'
 
 const props = defineProps<{
   expenses: Expense[]
