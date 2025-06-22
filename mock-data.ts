@@ -1,5 +1,5 @@
-import Income from './shared/models/income'
-import Expense from './shared/models/expense'
+import Income from '#shared/models/income'
+import Expense from '#shared/models/expense'
 
 export const MOCK_INCOMES: Income[] = [
   new Income({
