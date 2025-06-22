@@ -23,7 +23,7 @@ import type Expense from '#shared/models/expense'
 import { MOCK_EXPENSES } from '../../../mock-data'
 
 const { t } = useI18n()
-const { title, addLabel, addRoute, onEdit, onDelete } = useCRUDL('expenses')
+const { title, addLabel, addRoute, onEdit, onDelete } = useCRUDL()
 
 const actions: ActionKey[] = ['edit', 'delete']
 

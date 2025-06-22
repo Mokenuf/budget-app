@@ -1,12 +1,24 @@
+/**
+ * Composable helper to handle CRUDL operations for a given entity.
+ *
+ * @param entity - (Optional) You can pass the entity as a parameter to the
+ *                 composable if the route path is not the same as the entity name.
+ *                 If not provided, the entity key will be inferred from the route path.
+ *
+ * @returns An object with localized title, add label, add route, and navigation handlers.
+ *
+ * @example
+ * const { title, addLabel, addRoute, onEdit, onDelete } = useCRUDL('expenses')
+ */
 export function useCRUDL(entity?: string) {
   const route = useRoute()
   const { t } = useI18n()
   const localePath = useLocalePath()
 
-  const entityKey = entity || route.name?.toString().split('-')[0]
+  const entityKey = entity || route.path.split('/')[1]
 
   const addLabel = computed(() => t(`pages.${entityKey}.index.add`))
-  const addRoute = computed(() => `${entityKey}-add`)
+  const addRoute = computed(() => localePath(`${entityKey}-add`))
   const title = computed(() => t(`pages.${entityKey}.index.title`))
 
   function onEdit(id: string | number) {
