@@ -23,7 +23,7 @@ import type Income from '#shared/models/income'
 import { MOCK_INCOMES } from '../../../mock-data'
 
 const { t } = useI18n()
-const { title, addLabel, addRoute, onEdit, onDelete } = useCRUDL('incomes')
+const { title, addLabel, addRoute, onEdit, onDelete } = useCRUDL()
 
 const actions: ActionKey[] = ['edit', 'delete']
 
