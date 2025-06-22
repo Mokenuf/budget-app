@@ -25,6 +25,7 @@ import type { ActionKey } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
 import type Expense from '#shared/models/expense'
 import { MOCK_EXPENSES } from '../../../mock-data'
+
 const localePath = useLocalePath()
 const { t } = useI18n()
 
