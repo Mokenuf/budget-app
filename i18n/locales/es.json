@@ -5,6 +5,28 @@
       "incomes": "Ingresos",
       "netSavings": "Ahorro"
     },
+    "form": {
+      "expense": {
+        "back": "Volver",
+        "fields": {
+          "amount": "Cantidad",
+          "amount-min": "La cantidad debe ser mayor a 0",
+          "amount-invalid": "La cantidad debe ser un número",
+          "amount-required": "La cantidad es requerida",
+          "amount-placeholder": "Ingrese la cantidad...",
+          "description": "Descripción",
+          "description-placeholder": "Ingrese la descripción...",
+          "description-required": "La descripción es requerida",
+          "frequency": "Frecuencia",
+          "frequency-placeholder": "Selecciona la frecuencia",
+          "frequency-required": "La frecuencia es requerida",
+          "name": "Nombre",
+          "name-placeholder": "Ingrese el nombre...",
+          "name-required": "El nombre es requerido"
+        },
+        "submit": "Guardar"
+      }
+    },
     "header": {
       "title": "Budget Tool"
     },
@@ -14,25 +36,42 @@
       "incomes": "Ingresos"
     }
   },
-  "expenses": {
-    "index": {
-      "amount": "Cantidad",
-      "description": "Descripción",
-      "id": "ID",
-      "name": "Nombre",
-      "title": "Gastos"
+  "catalogs": {
+    "expense": {
+      "frequency": {
+        "monthly": "Mensual",
+        "yearly": "Anual"
+      }
     }
   },
-  "index": {
-    "title": "Dashboard"
-  },
-  "incomes": {
+  "pages": {
+    "expenses": {
+      "add": {
+        "title": "Agregar Gasto"
+      },
+      "edit": {
+        "title": "Editar Gasto {id}"
+      },
+      "index": {
+        "add": "Agregar Gasto",
+        "amount": "Cantidad",
+        "description": "Descripción",
+        "id": "ID",
+        "name": "Nombre",
+        "title": "Gastos"
+      }
+    },
     "index": {
-      "amount": "Cantidad",
-      "description": "Descripción",
-      "id": "ID",
-      "name": "Nombre",
-      "title": "Ingresos"
+      "title": "Dashboard"
+    },
+    "incomes": {
+      "index": {
+        "amount": "Cantidad",
+        "description": "Descripción",
+        "id": "ID",
+        "name": "Nombre",
+        "title": "Ingresos"
+      }
     }
   }
 }
