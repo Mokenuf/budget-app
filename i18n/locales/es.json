@@ -15,12 +15,24 @@
     }
   },
   "expenses": {
-    "title": "Gastos"
+    "index": {
+      "amount": "Cantidad",
+      "description": "Descripción",
+      "id": "ID",
+      "name": "Nombre",
+      "title": "Gastos"
+    }
   },
   "index": {
     "title": "Dashboard"
   },
   "incomes": {
-    "title": "Ingresos"
+    "index": {
+      "amount": "Cantidad",
+      "description": "Descripción",
+      "id": "ID",
+      "name": "Nombre",
+      "title": "Ingresos"
+    }
   }
 }
