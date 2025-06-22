@@ -8,3 +8,14 @@ export const CatalogExpenseFrequencyOptions = [
     value: 'yearly',
   },
 ]
+
+export const CatalogIncomeTypeOptions = [
+  {
+    label: 'catalogs.income.type.fixed',
+    value: 'fixed',
+  },
+  {
+    label: 'catalogs.income.type.extra',
+    value: 'extra',
+  },
+]

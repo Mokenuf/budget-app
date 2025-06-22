@@ -1,7 +1,7 @@
 {
   "app": {
     "dashboard": {
-      "expenses": "Gastos",
+      "expenses": "Expensas",
       "incomes": "Ingresos",
       "netSavings": "Ahorro"
     },
@@ -25,6 +25,26 @@
           "name-required": "El nombre es requerido"
         },
         "submit": "Guardar"
+      },
+      "income": {
+        "back": "Volver",
+        "fields": {
+          "amount": "Cantidad",
+          "amount-min": "La cantidad debe ser mayor a 0",
+          "amount-invalid": "La cantidad debe ser un número",
+          "amount-required": "La cantidad es requerida",
+          "amount-placeholder": "Ingrese la cantidad...",
+          "description": "Descripción",
+          "description-placeholder": "Ingrese la descripción...",
+          "description-required": "La descripción es requerida",
+          "name": "Nombre",
+          "name-placeholder": "Ingrese el nombre...",
+          "name-required": "El nombre es requerido",
+          "type": "Tipo",
+          "type-placeholder": "Selecciona el tipo",
+          "type-required": "El tipo es requerido"
+        },
+        "submit": "Guardar"
       }
     },
     "header": {
@@ -32,7 +52,7 @@
     },
     "sidebar": {
       "dashboard": "Dashboard",
-      "expenses": "Gastos",
+      "expenses": "Expensas",
       "incomes": "Ingresos"
     }
   },
@@ -42,30 +62,43 @@
         "monthly": "Mensual",
         "yearly": "Anual"
       }
+    },
+    "income": {
+      "type": {
+        "fixed": "Fijo",
+        "extra": "Extra"
+      }
     }
   },
   "pages": {
     "expenses": {
       "add": {
-        "title": "Agregar Gasto"
+        "title": "Agregar Expensa"
       },
       "edit": {
-        "title": "Editar Gasto {id}"
+        "title": "Editar Expensa {id}"
       },
       "index": {
-        "add": "Agregar Gasto",
+        "add": "Agregar Expensa",
         "amount": "Cantidad",
         "description": "Descripción",
         "id": "ID",
         "name": "Nombre",
-        "title": "Gastos"
+        "title": "Expensas"
       }
     },
     "index": {
       "title": "Dashboard"
     },
     "incomes": {
+      "add": {
+        "title": "Agregar Ingreso"
+      },
+      "edit": {
+        "title": "Editar Ingreso {id}"
+      },
       "index": {
+        "add": "Agregar Ingreso",
         "amount": "Cantidad",
         "description": "Descripción",
         "id": "ID",
