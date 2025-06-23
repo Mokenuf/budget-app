@@ -20,12 +20,12 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: any): void
 }>()
 
-const model = computed({
+const model = computed<any>({
   get: () => props.modelValue,
   set: (value) => emit('update:modelValue', value),
 })
 
-const translatedItems = computed(() => {
+const translatedItems = computed<OptionItem[]>(() => {
   return props.options.map((o) => ({
     label: t(o.label),
     value: o.value,

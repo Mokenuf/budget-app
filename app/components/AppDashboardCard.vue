@@ -35,11 +35,13 @@ const props = defineProps<{
   income: Income[]
 }>()
 
-const totalIncome = computed(() =>
+const totalIncome = computed<number>(() =>
   props.income.reduce((sum, i) => sum + i.amount, 0)
 )
-const totalExpenses = computed(() =>
+const totalExpenses = computed<number>(() =>
   props.expenses.reduce((sum, e) => sum + e.amount, 0)
 )
-const netSavings = computed(() => totalIncome.value - totalExpenses.value)
+const netSavings = computed<number>(
+  () => totalIncome.value - totalExpenses.value
+)
 </script>
