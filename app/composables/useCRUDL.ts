@@ -14,12 +14,16 @@ export function useCRUDL(entity?: string) {
   const route = useRoute()
   const { t } = useI18n()
   const localePath = useLocalePath()
+  const { title: configTitle } = useAppConfig()
 
-  const entityKey = entity || route.path.split('/')[1]
+  const entityKey = entity || route.path.split('/')[1] || ''
 
-  const addLabel = computed(() => t(`pages.${entityKey}.index.add`))
-  const addRoute = computed(() => localePath(`${entityKey}-add`))
-  const title = computed(() => t(`pages.${entityKey}.index.title`))
+  const addLabel = computed<string>(() => t(`pages.${entityKey}.index.add`))
+  const addRoute = computed<string>(() => localePath(`${entityKey}-add`))
+  const headTitle = computed<string>(
+    () => `${t(`pages.${entityKey}.index.title`)} | ${configTitle}`
+  )
+  const title = computed<string>(() => t(`pages.${entityKey}.index.title`))
 
   function onEdit(id: string | number) {
     navigateTo(localePath({ name: `${entityKey}-id-edit`, params: { id } }))
@@ -33,6 +37,7 @@ export function useCRUDL(entity?: string) {
     title,
     addLabel,
     addRoute,
+    headTitle,
     onEdit,
     onDelete,
   }

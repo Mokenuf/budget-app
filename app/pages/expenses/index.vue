@@ -7,9 +7,10 @@
       <UButton icon="i-heroicons-plus" :label="addLabel" :to="addRoute" />
     </div>
     <BaseTable
-      :rows="MOCK_EXPENSES"
+      :rows="expenses"
       :columns
       :actions
+      :loading
       @edit="onEdit"
       @delete="onDelete"
     />
@@ -20,10 +21,13 @@
 import type { ActionKey } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
 import type Expense from '#shared/models/expense'
-import { MOCK_EXPENSES } from '../../../mock-data'
 
 const { t } = useI18n()
-const { title, addLabel, addRoute, onEdit, onDelete } = useCRUDL()
+const { title, addLabel, addRoute, headTitle, onEdit, onDelete } = useCRUDL()
+const { expenses, loading } = storeToRefs(useExpensesStore())
+const { fetchAllExpenses } = useExpensesStore()
+
+useHead({ title: headTitle })
 
 const actions: ActionKey[] = ['edit', 'delete']
 
@@ -45,4 +49,8 @@ const columns: TableColumn<Expense>[] = [
     header: t('pages.expenses.index.description'),
   },
 ]
+
+onMounted(async () => {
+  await fetchAllExpenses()
+})
 </script>
