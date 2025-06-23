@@ -7,6 +7,7 @@
       th: 'px-4 py-3 text-sm text-left text-gray-400 uppercase',
       base: 'rounded-md, border border-gray-700 overflow-hidden',
     }"
+    :loading
   >
     <template #actions-cell="{ row: { original } }">
       <div class="flex justify-end gap-2">
@@ -45,6 +46,7 @@ const props = defineProps<{
   rows: any[]
   columns: TableColumn<any>[]
   actions?: ActionKey[]
+  loading?: boolean
 }>()
 
 const emits = defineEmits<{
