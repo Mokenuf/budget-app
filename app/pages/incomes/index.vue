@@ -7,9 +7,10 @@
       <UButton icon="i-heroicons-plus" :label="addLabel" :to="addRoute" />
     </div>
     <BaseTable
-      :rows="MOCK_INCOMES"
+      :rows="incomes"
       :columns
       :actions
+      :loading
       @edit="onEdit"
       @delete="onDelete"
     />
@@ -20,10 +21,13 @@
 import type { ActionKey } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
 import type Income from '#shared/models/income'
-import { MOCK_INCOMES } from '../../../mock-data'
 
 const { t } = useI18n()
-const { title, addLabel, addRoute, onEdit, onDelete } = useCRUDL()
+const { title, addLabel, addRoute, headTitle, onEdit, onDelete } = useCRUDL()
+const { incomes, loading } = storeToRefs(useIncomesStore())
+const { fetchAllIncomes } = useIncomesStore()
+
+useHead({ title: headTitle })
 
 const actions: ActionKey[] = ['edit', 'delete']
 
@@ -45,4 +49,8 @@ const columns: TableColumn<Income>[] = [
     header: t('pages.incomes.index.description'),
   },
 ]
+
+onMounted(async () => {
+  await fetchAllIncomes()
+})
 </script>

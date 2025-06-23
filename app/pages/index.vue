@@ -7,4 +7,11 @@
 
 <script setup lang="ts">
 import { MOCK_EXPENSES, MOCK_INCOMES } from '../../mock-data'
+
+const { t } = useI18n()
+const { title } = useAppConfig()
+
+useHead({
+  title: `${t('pages.index.title')} | ${title}`,
+})
 </script>
