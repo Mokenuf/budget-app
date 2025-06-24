@@ -85,6 +85,12 @@
       "index": {
         "add": "Agregar Expensa",
         "amount": "Cantidad",
+        "dialog": {
+          "delete": {
+            "title": "Eliminar Expensa",
+            "message": "¿Estás seguro de querer eliminar esta expensa? Esta acción no se puede deshacer."
+          }
+        },
         "description": "Descripción",
         "id": "ID",
         "name": "Nombre",
