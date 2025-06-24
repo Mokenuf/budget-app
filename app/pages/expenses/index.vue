@@ -23,7 +23,7 @@ import type { TableColumn } from '@nuxt/ui'
 import type Expense from '#shared/models/expense'
 
 const { t } = useI18n()
-const { title, addLabel, addRoute, headTitle, onEdit, onDelete } = useCRUDL()
+const { title, addLabel, addRoute, headTitle, onEdit } = useCRUDL()
 const { expenses, loading } = storeToRefs(useExpensesStore())
 const { fetchAllExpenses } = useExpensesStore()
 
