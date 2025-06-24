@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ActionKey } from '~/components/base/BaseTable.vue'
+import type { Action } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
 import type Income from '#shared/models/income'
 
@@ -29,7 +29,16 @@ const { fetchAllIncomes } = useIncomesStore()
 
 useHead({ title: headTitle })
 
-const actions: ActionKey[] = ['edit', 'delete']
+const actions: Action[] = [
+  {
+    key: 'edit',
+    icon: 'i-heroicons-pencil',
+  },
+  {
+    key: 'delete',
+    icon: 'i-heroicons-trash',
+  },
+]
 
 const columns: TableColumn<Income>[] = [
   {
