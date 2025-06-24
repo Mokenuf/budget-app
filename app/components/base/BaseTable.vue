@@ -12,25 +12,12 @@
     <template #actions-cell="{ row: { original } }">
       <div class="flex justify-end gap-2">
         <UButton
-          v-if="actions?.includes('view')"
-          icon="i-heroicons-eye"
+          v-for="action in actions"
+          :key="action.key"
+          :icon="action.icon"
           variant="ghost"
           size="xs"
-          @click="emits('view', original.id)"
-        />
-        <UButton
-          v-if="actions?.includes('edit')"
-          icon="i-heroicons-pencil"
-          variant="ghost"
-          size="xs"
-          @click="emits('edit', original.id)"
-        />
-        <UButton
-          v-if="actions?.includes('delete')"
-          icon="i-heroicons-trash"
-          variant="ghost"
-          size="xs"
-          @click="emits('delete', original.id)"
+          @click="emits(action.key, original.id)"
         />
       </div>
     </template>
@@ -40,17 +27,22 @@
 <script setup lang="ts">
 import type { TableColumn } from '@nuxt/ui'
 
-export type ActionKey = 'edit' | 'delete' | 'view'
+type ActionKey = 'edit' | 'delete' | 'view'
+
+export type Action = {
+  key: ActionKey
+  icon: string
+}
 
 const props = defineProps<{
   rows: any[]
   columns: TableColumn<any>[]
-  actions?: ActionKey[]
+  actions?: Action[]
   loading?: boolean
 }>()
 
 const emits = defineEmits<{
-  (e: 'edit' | 'delete' | 'view', id: string): void
+  (e: Action['key'], id: string): void
 }>()
 
 const columnsWithActions = computed<TableColumn<any>[]>(() => {

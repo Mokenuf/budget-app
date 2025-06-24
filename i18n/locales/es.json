@@ -1,9 +1,13 @@
 {
   "app": {
-    "dashboard": {
+    "dashboard-card": {
       "expenses": "Expensas",
       "incomes": "Ingresos",
-      "netSavings": "Ahorro"
+      "net-savings": "Ahorro"
+    },
+    "dialog": {
+      "cancel": "Cancelar",
+      "confirm": "Confirmar"
     },
     "form": {
       "expense": {
@@ -81,6 +85,12 @@
       "index": {
         "add": "Agregar Expensa",
         "amount": "Cantidad",
+        "dialog": {
+          "delete": {
+            "title": "Eliminar Expensa",
+            "message": "¿Estás seguro de querer eliminar esta expensa? Esta acción no se puede deshacer."
+          }
+        },
         "description": "Descripción",
         "id": "ID",
         "name": "Nombre",
@@ -101,10 +111,21 @@
         "add": "Agregar Ingreso",
         "amount": "Cantidad",
         "description": "Descripción",
+        "dialog": {
+          "delete": {
+            "title": "Eliminar Ingreso",
+            "message": "¿Estás seguro de querer eliminar este ingreso? Esta acción no se puede deshacer."
+          }
+        },
         "id": "ID",
         "name": "Nombre",
         "title": "Ingresos"
       }
+    }
+  },
+  "plugins": {
+    "dialog": {
+      "title": "Confirmar"
     }
   }
 }

@@ -18,18 +18,28 @@
 </template>
 
 <script setup lang="ts">
-import type { ActionKey } from '~/components/base/BaseTable.vue'
+import type { Action } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
 import type Income from '#shared/models/income'
 
 const { t } = useI18n()
-const { title, addLabel, addRoute, headTitle, onEdit, onDelete } = useCRUDL()
+const { $dialog } = useNuxtApp()
+const { title, addLabel, addRoute, headTitle, onEdit } = useCRUDL()
 const { incomes, loading } = storeToRefs(useIncomesStore())
 const { fetchAllIncomes } = useIncomesStore()
 
 useHead({ title: headTitle })
 
-const actions: ActionKey[] = ['edit', 'delete']
+const actions: Action[] = [
+  {
+    key: 'edit',
+    icon: 'i-heroicons-pencil',
+  },
+  {
+    key: 'delete',
+    icon: 'i-heroicons-trash',
+  },
+]
 
 const columns: TableColumn<Income>[] = [
   {
@@ -49,6 +59,16 @@ const columns: TableColumn<Income>[] = [
     header: t('pages.incomes.index.description'),
   },
 ]
+
+async function onDelete(id: string) {
+  const response = await $dialog.confirm({
+    title: 'pages.incomes.index.dialog.delete.title',
+    message: 'pages.incomes.index.dialog.delete.message',
+  })
+  if (response) {
+    console.log('delete', id)
+  }
+}
 
 onMounted(async () => {
   await fetchAllIncomes()

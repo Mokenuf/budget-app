@@ -29,16 +29,11 @@ export function useCRUDL(entity?: string) {
     navigateTo(localePath({ name: `${entityKey}-id-edit`, params: { id } }))
   }
 
-  function onDelete(id: string | number) {
-    console.log('delete', id)
-  }
-
   return {
     title,
     addLabel,
     addRoute,
     headTitle,
     onEdit,
-    onDelete,
   }
 }
