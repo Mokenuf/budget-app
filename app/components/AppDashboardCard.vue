@@ -3,13 +3,13 @@
     <div class="flex flex-col gap-6 p-4">
       <div class="flex justify-between">
         <span class="font-semibold text-lg">{{
-          $t('app.dashboard.incomes')
+          $t('app.dashboard-card.incomes')
         }}</span>
         <span class="font-mono text-lg">${{ totalIncome }}</span>
       </div>
       <div class="flex justify-between">
         <span class="font-semibold text-lg">{{
-          $t('app.dashboard.expenses')
+          $t('app.dashboard-card.expenses')
         }}</span>
         <span class="font-mono text-lg">${{ totalExpenses }}</span>
       </div>
@@ -20,7 +20,7 @@
           'text-red-500': netSavings < 0,
         }"
       >
-        {{ $t('app.dashboard.netSavings') }}: ${{ netSavings }}
+        {{ $t('app.dashboard-card.net-savings') }}: ${{ netSavings }}
       </div>
     </div>
   </UCard>

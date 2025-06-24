@@ -23,7 +23,8 @@ import type { TableColumn } from '@nuxt/ui'
 import type Income from '#shared/models/income'
 
 const { t } = useI18n()
-const { title, addLabel, addRoute, headTitle, onEdit, onDelete } = useCRUDL()
+const { $dialog } = useNuxtApp()
+const { title, addLabel, addRoute, headTitle, onEdit } = useCRUDL()
 const { incomes, loading } = storeToRefs(useIncomesStore())
 const { fetchAllIncomes } = useIncomesStore()
 
@@ -58,6 +59,16 @@ const columns: TableColumn<Income>[] = [
     header: t('pages.incomes.index.description'),
   },
 ]
+
+async function onDelete(id: string) {
+  const response = await $dialog.confirm({
+    title: 'pages.incomes.index.dialog.delete.title',
+    message: 'pages.incomes.index.dialog.delete.message',
+  })
+  if (response) {
+    console.log('delete', id)
+  }
+}
 
 onMounted(async () => {
   await fetchAllIncomes()

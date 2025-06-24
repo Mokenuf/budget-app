@@ -23,7 +23,8 @@ import type { TableColumn } from '@nuxt/ui'
 import type Expense from '#shared/models/expense'
 
 const { t } = useI18n()
-const { title, addLabel, addRoute, headTitle, onEdit, onDelete } = useCRUDL()
+const { $dialog } = useNuxtApp()
+const { title, addLabel, addRoute, headTitle, onEdit } = useCRUDL()
 const { expenses, loading } = storeToRefs(useExpensesStore())
 const { fetchAllExpenses } = useExpensesStore()
 
@@ -58,6 +59,16 @@ const columns: TableColumn<Expense>[] = [
     header: t('pages.expenses.index.description'),
   },
 ]
+
+async function onDelete(id: string) {
+  const response = await $dialog.confirm({
+    title: 'pages.expenses.index.dialog.delete.title',
+    message: 'pages.expenses.index.dialog.delete.message',
+  })
+  if (response) {
+    console.log('delete', id)
+  }
+}
 
 onMounted(async () => {
   await fetchAllExpenses()
