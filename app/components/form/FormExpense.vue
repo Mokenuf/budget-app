@@ -8,6 +8,7 @@
     >
       <UInput
         v-model="formModel.name"
+        :loading
         :placeholder="$t('app.form.expense.fields.name-placeholder')"
         class="w-full"
         required
@@ -21,6 +22,7 @@
     >
       <UTextarea
         v-model="formModel.description"
+        :loading
         :placeholder="$t('app.form.expense.fields.description-placeholder')"
         class="w-full"
         required
@@ -35,6 +37,7 @@
       <UInput
         v-model="formModel.amount"
         type="number"
+        :loading
         :placeholder="$t('app.form.expense.fields.amount-placeholder')"
         class="w-full"
         required
@@ -48,6 +51,7 @@
     >
       <BaseSelect
         v-model="formModel.frequency"
+        :loading
         :options="CatalogExpenseFrequencyOptions"
         :placeholder="$t('app.form.expense.fields.frequency-placeholder')"
         class="w-full"
@@ -58,12 +62,14 @@
       <UButton
         class="cursor-pointer"
         type="submit"
+        :loading
         :label="$t('app.form.expense.submit')"
         :disabled="!isValid"
       />
       <UButton
         class="cursor-pointer"
         type="button"
+        :loading
         variant="outline"
         :label="$t('app.form.expense.back')"
         :to="$localePath('expenses')"
@@ -84,6 +90,7 @@ const { t } = useI18n()
 
 const props = defineProps<{
   expense?: Expense
+  loading?: boolean
 }>()
 
 const emit = defineEmits<{

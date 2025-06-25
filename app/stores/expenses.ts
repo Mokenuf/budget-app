@@ -1,12 +1,20 @@
 import { defineStore } from 'pinia'
+import BaseResponseGetAll from '#shared/models/base-response-get-all'
 import Expense from '#shared/models/expense'
+import type Metadata from '#shared/models/metadata'
 import { MOCK_EXPENSES } from '../../mock-data'
 
 export const useExpensesStore = defineStore('expenses', () => {
+  // Composables
+  const toast = useToast()
+  const { t } = useI18n()
+  const localePath = useLocalePath()
+
   // State
   const expenses = ref<Expense[]>([])
-  const expense = ref<Expense | null>(null)
+  const expense = ref<Expense | undefined>(undefined)
   const loading = ref<boolean>(false)
+  const metadata = ref<Metadata | undefined>(undefined)
 
   // Actions
   async function createExpense(payload: Expense) {
@@ -23,6 +31,11 @@ export const useExpensesStore = defineStore('expenses', () => {
           updatedAt: new Date(),
         })
         addExpense(expenseToCreate)
+        toast.add({
+          title: t('store.expenses.create.success'),
+          color: 'success',
+        })
+        navigateTo(localePath('expenses'))
       }
     } catch (error) {
       console.error(error)
@@ -38,6 +51,11 @@ export const useExpensesStore = defineStore('expenses', () => {
       )
       if (response) {
         removeExpense(id)
+        toast.add({
+          title: t('store.expenses.delete.success'),
+          color: 'success',
+        })
+        fetchAllExpenses()
       }
     } catch (error) {
       console.error(error)
@@ -48,12 +66,15 @@ export const useExpensesStore = defineStore('expenses', () => {
   async function fetchAllExpenses() {
     setLoading(true)
     setExpenses([])
+    setMetadata(undefined)
     try {
       const response = await new Promise<boolean>((resolve) =>
         setTimeout(() => resolve(true), 500)
       )
       if (response) {
-        setExpenses(MOCK_EXPENSES)
+        const expenses = new BaseResponseGetAll<Expense>(MOCK_EXPENSES, Expense)
+        setExpenses(expenses.rows)
+        setMetadata(expenses.metadata)
       }
     } catch (error) {
       console.error(error)
@@ -63,13 +84,15 @@ export const useExpensesStore = defineStore('expenses', () => {
   }
   async function fetchExpenseById(id: number) {
     setLoading(true)
+    setExpense(undefined)
     try {
       const response = await new Promise<boolean>((resolve) =>
         setTimeout(() => resolve(true), 500)
       )
       if (response) {
-        const expense = MOCK_EXPENSES.find((e) => e.id === id)
-        if (expense) {
+        const expenseToFind = MOCK_EXPENSES.data.find((e) => e.id === id)
+        if (expenseToFind) {
+          const expense = new Expense(expenseToFind)
           setExpense(expense)
         }
       }
@@ -94,6 +117,11 @@ export const useExpensesStore = defineStore('expenses', () => {
             updatedAt: new Date(),
           })
           patchExpense(expense)
+          toast.add({
+            title: t('store.expenses.update.success'),
+            color: 'success',
+          })
+          navigateTo(localePath('expenses'))
         }
       }
     } catch (error) {
@@ -105,17 +133,17 @@ export const useExpensesStore = defineStore('expenses', () => {
 
   // Mutations
   function addExpense(payload: Expense) {
-    expenses.value.push(payload)
+    MOCK_EXPENSES.data.push({ ...payload, id: Number(payload.id) })
   }
   function patchExpense(payload: Expense) {
-    expenses.value = expenses.value.map((e) =>
-      e.id === payload.id ? payload : e
+    MOCK_EXPENSES.data = MOCK_EXPENSES.data.map((e) =>
+      e.id === payload.id ? { ...payload, id: Number(payload.id) } : e
     )
   }
   function removeExpense(id: number) {
-    expenses.value = expenses.value.filter((e) => e.id !== id)
+    MOCK_EXPENSES.data = MOCK_EXPENSES.data.filter((e) => e.id !== id)
   }
-  function setExpense(payload: Expense) {
+  function setExpense(payload: Expense | undefined) {
     expense.value = payload
   }
   function setExpenses(payload: Expense[]) {
@@ -124,11 +152,15 @@ export const useExpensesStore = defineStore('expenses', () => {
   function setLoading(payload: boolean) {
     loading.value = payload
   }
+  function setMetadata(payload: Metadata | undefined) {
+    metadata.value = payload
+  }
 
   return {
     expenses,
     expense,
     loading,
+    metadata,
     createExpense,
     deleteExpense,
     fetchAllExpenses,

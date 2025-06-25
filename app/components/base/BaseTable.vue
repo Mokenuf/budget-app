@@ -42,7 +42,7 @@ const props = defineProps<{
 }>()
 
 const emits = defineEmits<{
-  (e: Action['key'], id: string): void
+  (e: Action['key'], id: number): void
 }>()
 
 const columnsWithActions = computed<TableColumn<any>[]>(() => {

@@ -26,7 +26,7 @@ const { t } = useI18n()
 const { $dialog } = useNuxtApp()
 const { title, addLabel, addRoute, headTitle, onEdit } = useCRUDL()
 const { expenses, loading } = storeToRefs(useExpensesStore())
-const { fetchAllExpenses } = useExpensesStore()
+const { deleteExpense, fetchAllExpenses } = useExpensesStore()
 
 useHead({ title: headTitle })
 
@@ -60,13 +60,13 @@ const columns: TableColumn<Expense>[] = [
   },
 ]
 
-async function onDelete(id: string) {
+async function onDelete(id: number) {
   const response = await $dialog.confirm({
     title: 'pages.expenses.index.dialog.delete.title',
     message: 'pages.expenses.index.dialog.delete.message',
   })
   if (response) {
-    console.log('delete', id)
+    deleteExpense(id)
   }
 }
 

@@ -1,5 +1,11 @@
 <template>
-  <USelect v-model="model" :items="translatedItems" :placeholder :required />
+  <USelect
+    v-model="model"
+    :loading
+    :items="translatedItems"
+    :placeholder
+    :required
+  />
 </template>
 
 <script setup lang="ts">
@@ -10,6 +16,7 @@ export interface OptionItem {
 const { t } = useI18n()
 
 const props = defineProps<{
+  loading?: boolean
   modelValue: any
   options: OptionItem[]
   placeholder?: string
