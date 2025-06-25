@@ -3,12 +3,15 @@
     <h2 class="text-2xl font-bold mb-2">
       {{ $t('pages.incomes.add.title') }}
     </h2>
-    <FormIncome @submit="onSubmit" />
+    <FormIncome :loading @submit="onSubmit" />
   </div>
 </template>
 
 <script setup lang="ts">
+const { loading } = storeToRefs(useIncomesStore())
+const { createIncome } = useIncomesStore()
+
 function onSubmit(data) {
-  console.log(data)
+  createIncome(data)
 }
 </script>
