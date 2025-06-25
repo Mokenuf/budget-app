@@ -5,7 +5,7 @@ interface Parser<T> {
 }
 
 export default abstract class BaseEntity<T> implements Parser<T> {
-  id?: number | string
+  id?: number
   createdAt?: Date
   updatedAt?: Date
   deletedAt?: Date

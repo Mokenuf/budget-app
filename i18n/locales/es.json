@@ -127,5 +127,29 @@
     "dialog": {
       "title": "Confirmar"
     }
+  },
+  "store": {
+    "expenses": {
+      "create": {
+        "success": "Expensa creada correctamente"
+      },
+      "delete": {
+        "success": "Expensa eliminada correctamente"
+      },
+      "update": {
+        "success": "Expensa actualizada correctamente"
+      }
+    },
+    "incomes": {
+      "create": {
+        "success": "Ingreso creado correctamente"
+      },
+      "delete": {
+        "success": "Ingreso eliminado correctamente"
+      },
+      "update": {
+        "success": "Ingreso actualizado correctamente"
+      }
+    }
   }
 }

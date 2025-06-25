@@ -1,12 +1,20 @@
 import { defineStore } from 'pinia'
 import Income from '#shared/models/income'
+import type Metadata from '#shared/models/metadata'
 import { MOCK_INCOMES } from '../../mock-data'
+import BaseResponseGetAll from '~~/shared/models/base-response-get-all'
 
 export const useIncomesStore = defineStore('incomes', () => {
+  // Composables
+  const toast = useToast()
+  const { t } = useI18n()
+  const localePath = useLocalePath()
+
   // State
   const incomes = ref<Income[]>([])
-  const income = ref<Income | null>(null)
+  const income = ref<Income | undefined>(undefined)
   const loading = ref<boolean>(false)
+  const metadata = ref<Metadata | undefined>(undefined)
 
   // Actions
   async function createIncome(payload: Income) {
@@ -23,6 +31,11 @@ export const useIncomesStore = defineStore('incomes', () => {
           updatedAt: new Date(),
         })
         addIncome(incomeToCreate)
+        toast.add({
+          title: t('store.incomes.create.success'),
+          color: 'success',
+        })
+        navigateTo(localePath('incomes'))
       }
     } catch (error) {
       console.error(error)
@@ -38,6 +51,11 @@ export const useIncomesStore = defineStore('incomes', () => {
       )
       if (response) {
         removeIncome(id)
+        toast.add({
+          title: t('store.incomes.delete.success'),
+          color: 'success',
+        })
+        fetchAllIncomes()
       }
     } catch (error) {
       console.error(error)
@@ -53,7 +71,9 @@ export const useIncomesStore = defineStore('incomes', () => {
         setTimeout(() => resolve(true), 500)
       )
       if (response) {
-        setIncomes(MOCK_INCOMES)
+        const incomes = new BaseResponseGetAll<Income>(MOCK_INCOMES, Income)
+        setIncomes(incomes.rows)
+        setMetadata(incomes.metadata)
       }
     } catch (error) {
       console.error(error)
@@ -63,13 +83,15 @@ export const useIncomesStore = defineStore('incomes', () => {
   }
   async function fetchIncomeById(id: number) {
     setLoading(true)
+    setIncome(undefined)
     try {
       const response = await new Promise<boolean>((resolve) =>
         setTimeout(() => resolve(true), 500)
       )
       if (response) {
-        const income = MOCK_INCOMES.find((e) => e.id === id)
-        if (income) {
+        const incomeToFind = MOCK_INCOMES.data.find((i) => i.id === id)
+        if (incomeToFind) {
+          const income = new Income(incomeToFind)
           setIncome(income)
         }
       }
@@ -86,7 +108,7 @@ export const useIncomesStore = defineStore('incomes', () => {
         setTimeout(() => resolve(true), 500)
       )
       if (response) {
-        const incomeToUpdate = incomes.value.find((e) => e.id === id)
+        const incomeToUpdate = MOCK_INCOMES.data.find((i) => i.id === id)
         if (incomeToUpdate) {
           const income = new Income({
             ...incomeToUpdate,
@@ -94,6 +116,11 @@ export const useIncomesStore = defineStore('incomes', () => {
             updatedAt: new Date(),
           })
           patchIncome(income)
+          toast.add({
+            title: t('store.incomes.update.success'),
+            color: 'success',
+          })
+          navigateTo(localePath('incomes'))
         }
       }
     } catch (error) {
@@ -105,17 +132,17 @@ export const useIncomesStore = defineStore('incomes', () => {
 
   // Mutations
   function addIncome(payload: Income) {
-    incomes.value.push(payload)
+    MOCK_INCOMES.data.push({ ...payload, id: Number(payload.id) })
   }
   function patchIncome(payload: Income) {
-    incomes.value = incomes.value.map((e) =>
-      e.id === payload.id ? payload : e
+    MOCK_INCOMES.data = MOCK_INCOMES.data.map((i) =>
+      i.id === payload.id ? { ...payload, id: Number(payload.id) } : i
     )
   }
   function removeIncome(id: number) {
-    incomes.value = incomes.value.filter((e) => e.id !== id)
+    MOCK_INCOMES.data = MOCK_INCOMES.data.filter((i) => i.id !== id)
   }
-  function setIncome(payload: Income) {
+  function setIncome(payload: Income | undefined) {
     income.value = payload
   }
   function setIncomes(payload: Income[]) {
@@ -124,11 +151,15 @@ export const useIncomesStore = defineStore('incomes', () => {
   function setLoading(payload: boolean) {
     loading.value = payload
   }
+  function setMetadata(payload: Metadata | undefined) {
+    metadata.value = payload
+  }
 
   return {
     incomes,
     income,
     loading,
+    metadata,
     createIncome,
     deleteIncome,
     fetchAllIncomes,
