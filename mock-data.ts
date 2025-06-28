@@ -40,7 +40,7 @@ export const MOCK_EXPENSES = {
     },
   ],
   metadata: {
-    total: 2,
+    total: 30,
     page: 1,
     pageSize: 20,
   },

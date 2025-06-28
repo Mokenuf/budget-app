@@ -8,11 +8,13 @@
     </div>
     <BaseTable
       :rows="expenses"
+      :metadata
       :columns
       :actions
       :loading
       @edit="onEdit"
       @delete="onDelete"
+      @page-change="onPageChange"
     />
   </div>
 </template>
@@ -21,11 +23,12 @@
 import type { Action } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
 import type Expense from '#shared/models/expense'
+import type QueryParams from '#shared/models/query-params'
 
 const { t } = useI18n()
 const { $dialog } = useNuxtApp()
 const { title, addLabel, addRoute, headTitle, onEdit } = useCRUDL()
-const { expenses, loading } = storeToRefs(useExpensesStore())
+const { expenses, loading, metadata } = storeToRefs(useExpensesStore())
 const { deleteExpense, fetchAllExpenses } = useExpensesStore()
 
 useHead({ title: headTitle })
@@ -68,6 +71,13 @@ async function onDelete(id: number) {
   if (response) {
     deleteExpense(id)
   }
+}
+
+async function onPageChange(page: number) {
+  const params: QueryParams = {
+    page,
+  }
+  await fetchAllExpenses({ params })
 }
 
 onMounted(async () => {

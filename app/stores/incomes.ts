@@ -2,7 +2,8 @@ import { defineStore } from 'pinia'
 import Income from '#shared/models/income'
 import type Metadata from '#shared/models/metadata'
 import { MOCK_INCOMES } from '../../mock-data'
-import BaseResponseGetAll from '~~/shared/models/base-response-get-all'
+import BaseResponseGetAll from '#shared/models/base-response-get-all'
+import type QueryParams from '#shared/models/query-params'
 
 export const useIncomesStore = defineStore('incomes', () => {
   // Composables
@@ -63,7 +64,7 @@ export const useIncomesStore = defineStore('incomes', () => {
       setLoading(false)
     }
   }
-  async function fetchAllIncomes() {
+  async function fetchAllIncomes({ params }: { params?: QueryParams } = {}) {
     setLoading(true)
     setIncomes([])
     try {
@@ -71,6 +72,9 @@ export const useIncomesStore = defineStore('incomes', () => {
         setTimeout(() => resolve(true), 500)
       )
       if (response) {
+        if (params) {
+          console.log(generateQueryParams(params))
+        }
         const incomes = new BaseResponseGetAll<Income>(MOCK_INCOMES, Income)
         setIncomes(incomes.rows)
         setMetadata(incomes.metadata)

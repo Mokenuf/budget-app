@@ -22,10 +22,25 @@
       </div>
     </template>
   </UTable>
+  <UPagination
+    v-if="metadata"
+    v-model:page="currentPage"
+    class="mt-4"
+    :items-per-page="metadata.pageSize"
+    :total="metadata.total"
+    :ui="{
+      first: 'cursor-pointer',
+      last: 'cursor-pointer',
+      next: 'cursor-pointer',
+      prev: 'cursor-pointer',
+      item: 'cursor-pointer',
+    }"
+  />
 </template>
 
 <script setup lang="ts">
 import type { TableColumn } from '@nuxt/ui'
+import type Metadata from '#shared/models/metadata'
 
 type ActionKey = 'edit' | 'delete' | 'view'
 
@@ -35,15 +50,18 @@ export type Action = {
 }
 
 const props = defineProps<{
-  rows: any[]
-  columns: TableColumn<any>[]
   actions?: Action[]
+  columns: TableColumn<any>[]
   loading?: boolean
+  metadata?: Metadata
+  rows: any[]
 }>()
 
 const emits = defineEmits<{
-  (e: Action['key'], id: number): void
+  (e: Action['key'] | 'page-change', value: number): void
 }>()
+
+const currentPage = ref(props.metadata?.page || 1)
 
 const columnsWithActions = computed<TableColumn<any>[]>(() => {
   if (!props.actions?.length) return props.columns
@@ -53,5 +71,9 @@ const columnsWithActions = computed<TableColumn<any>[]>(() => {
       id: 'actions',
     },
   ]
+})
+
+watch(currentPage, (page) => {
+  emits('page-change', page)
 })
 </script>
