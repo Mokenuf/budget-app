@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import BaseResponseGetAll from '#shared/models/base-response-get-all'
 import Expense from '#shared/models/expense'
 import type Metadata from '#shared/models/metadata'
+import type QueryParams from '#shared/models/query-params'
 import { MOCK_EXPENSES } from '../../mock-data'
 
 export const useExpensesStore = defineStore('expenses', () => {
@@ -63,7 +64,7 @@ export const useExpensesStore = defineStore('expenses', () => {
       setLoading(false)
     }
   }
-  async function fetchAllExpenses() {
+  async function fetchAllExpenses({ params }: { params?: QueryParams } = {}) {
     setLoading(true)
     setExpenses([])
     setMetadata(undefined)
@@ -72,6 +73,9 @@ export const useExpensesStore = defineStore('expenses', () => {
         setTimeout(() => resolve(true), 500)
       )
       if (response) {
+        if (params) {
+          console.log(generateQueryParams(params))
+        }
         const expenses = new BaseResponseGetAll<Expense>(MOCK_EXPENSES, Expense)
         setExpenses(expenses.rows)
         setMetadata(expenses.metadata)
