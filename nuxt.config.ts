@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/supabase',
   ],
   css: ['~/assets/css/main.css'],
   i18n: {
@@ -26,5 +27,8 @@ export default defineNuxtConfig({
     bundle: {
       optimizeTranslationDirective: false,
     },
+  },
+  supabase: {
+    redirect: false,
   },
 })
