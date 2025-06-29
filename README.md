@@ -47,7 +47,7 @@ npm run dev
 ## 🧪 Estado actual
 
 - ✅ UI básica funcional
-- ✅ Registro y listado de **ingresos** y **expensas**
+- ✅ Alta, Baja, Modificación y Listado de **ingresos** y **expensas**
 - ✅ Cálculo automático de ahorro mensual
 - ✅ Estructura extensible con Pinia + Zod
 - ❌ Sin persistencia de datos todavía
