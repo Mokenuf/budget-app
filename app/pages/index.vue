@@ -1,26 +1,5 @@
 <template>
-  <div class="flex flex-col gap-4">
-    <h2 class="text-2xl font-bold mb-2">{{ $t('pages.index.title') }}</h2>
-    <AppDashboardCard :expenses :incomes :loading />
+  <div>
+    <h1>Welcome</h1>
   </div>
 </template>
-
-<script setup lang="ts">
-const { t } = useI18n()
-const { title } = useAppConfig()
-const { expenses, loading: expensesLoading } = storeToRefs(useExpensesStore())
-const { incomes, loading: incomesLoading } = storeToRefs(useIncomesStore())
-const { fetchAllExpenses } = useExpensesStore()
-const { fetchAllIncomes } = useIncomesStore()
-
-const loading = computed(() => expensesLoading.value || incomesLoading.value)
-
-useHead({
-  title: `${t('pages.index.title')} | ${title}`,
-})
-
-onMounted(async () => {
-  await fetchAllExpenses()
-  await fetchAllIncomes()
-})
-</script>

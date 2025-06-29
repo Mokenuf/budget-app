@@ -18,21 +18,27 @@ export function useCRUDL(entity?: string) {
   const localePath = useLocalePath()
   const { title: configTitle } = useAppConfig()
 
-  const entityKey = entity || route.path.split('/')[1] || ''
+  const entityKey = entity || route.path.split('panel/')[1] || ''
   const params = reactive<QueryParams>({
     page: 1,
     pageSize: 10,
   })
 
-  const addLabel = computed<string>(() => t(`pages.${entityKey}.index.add`))
-  const addRoute = computed<string>(() => localePath(`${entityKey}-add`))
-  const headTitle = computed<string>(
-    () => `${t(`pages.${entityKey}.index.title`)} | ${configTitle}`
+  const addLabel = computed<string>(() =>
+    t(`pages.panel.${entityKey}.index.add`)
   )
-  const title = computed<string>(() => t(`pages.${entityKey}.index.title`))
+  const addRoute = computed<string>(() => localePath(`panel-${entityKey}-add`))
+  const headTitle = computed<string>(
+    () => `${t(`pages.panel.${entityKey}.index.title`)} | ${configTitle}`
+  )
+  const title = computed<string>(() =>
+    t(`pages.panel.${entityKey}.index.title`)
+  )
 
   function onEdit(id: string | number) {
-    navigateTo(localePath({ name: `${entityKey}-id-edit`, params: { id } }))
+    navigateTo(
+      localePath({ name: `panel-${entityKey}-id-edit`, params: { id } })
+    )
   }
 
   return {

@@ -84,61 +84,64 @@
     }
   },
   "pages": {
-    "expenses": {
-      "add": {
-        "title": "Agregar Expensa"
+    "auth": {},
+    "panel": {
+      "dashboard": {
+        "title": "Dashboard"
       },
-      "edit": {
-        "title": "Editar Expensa {id}"
+      "expenses": {
+        "add": {
+          "title": "Agregar Expensa"
+        },
+        "edit": {
+          "title": "Editar Expensa {id}"
+        },
+        "index": {
+          "add": "Agregar Expensa",
+          "amount": "Cantidad",
+          "dialog": {
+            "delete": {
+              "title": "Eliminar Expensa",
+              "message": "¿Estás seguro de querer eliminar esta expensa? Esta acción no se puede deshacer."
+            }
+          },
+          "description": "Descripción",
+          "filters": {
+            "title": "Filtros",
+            "search": "Buscar",
+            "search-placeholder": "Buscar..."
+          },
+          "id": "ID",
+          "name": "Nombre",
+          "title": "Expensas"
+        }
       },
-      "index": {
-        "add": "Agregar Expensa",
-        "amount": "Cantidad",
-        "dialog": {
-          "delete": {
-            "title": "Eliminar Expensa",
-            "message": "¿Estás seguro de querer eliminar esta expensa? Esta acción no se puede deshacer."
-          }
+      "incomes": {
+        "add": {
+          "title": "Agregar Ingreso"
         },
-        "description": "Descripción",
-        "filters": {
-          "title": "Filtros",
-          "search": "Buscar",
-          "search-placeholder": "Buscar..."
+        "edit": {
+          "title": "Editar Ingreso {id}"
         },
-        "id": "ID",
-        "name": "Nombre",
-        "title": "Expensas"
-      }
-    },
-    "index": {
-      "title": "Dashboard"
-    },
-    "incomes": {
-      "add": {
-        "title": "Agregar Ingreso"
-      },
-      "edit": {
-        "title": "Editar Ingreso {id}"
-      },
-      "index": {
-        "add": "Agregar Ingreso",
-        "amount": "Cantidad",
-        "description": "Descripción",
-        "dialog": {
-          "delete": {
-            "title": "Eliminar Ingreso",
-            "message": "¿Estás seguro de querer eliminar este ingreso? Esta acción no se puede deshacer."
-          }
-        },
-        "filters": {
-          "title": "Filtros",
-          "search": "Buscar",
-          "search-placeholder": "Buscar..."
-        },
-        "id": "ID",
-        "name": "Nombre",
-        "title": "Ingresos"
+        "index": {
+          "add": "Agregar Ingreso",
+          "amount": "Cantidad",
+          "description": "Descripción",
+          "dialog": {
+            "delete": {
+              "title": "Eliminar Ingreso",
+              "message": "¿Estás seguro de querer eliminar este ingreso? Esta acción no se puede deshacer."
+            }
+          },
+          "filters": {
+            "title": "Filtros",
+            "search": "Buscar",
+            "search-placeholder": "Buscar..."
+          },
+          "id": "ID",
+          "name": "Nombre",
+          "title": "Ingresos"
+        }
       }
     }
   },

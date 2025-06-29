@@ -72,7 +72,7 @@
         :loading
         variant="outline"
         :label="$t('app.form.income.back')"
-        :to="$localePath('incomes')"
+        :to="$localePath('panel-incomes')"
       />
     </div>
   </UForm>

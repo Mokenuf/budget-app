@@ -1,7 +1,9 @@
 <template>
   <div>
     <h2 class="text-2xl font-bold mb-2">
-      {{ $t('pages.expenses.edit.title', { id: $route.params.id ?? 'N/A' }) }}
+      {{
+        $t('pages.panel.expenses.edit.title', { id: $route.params.id ?? 'N/A' })
+      }}
     </h2>
     <FormExpense :expense :loading @submit="onSubmit" />
   </div>

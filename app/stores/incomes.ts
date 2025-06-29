@@ -36,7 +36,7 @@ export const useIncomesStore = defineStore('incomes', () => {
           title: t('store.incomes.create.success'),
           color: 'success',
         })
-        navigateTo(localePath('incomes'))
+        navigateTo(localePath('panel-incomes'))
       }
     } catch (error) {
       console.error(error)
@@ -124,7 +124,7 @@ export const useIncomesStore = defineStore('incomes', () => {
             title: t('store.incomes.update.success'),
             color: 'success',
           })
-          navigateTo(localePath('incomes'))
+          navigateTo(localePath('panel-incomes'))
         }
       }
     } catch (error) {

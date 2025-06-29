@@ -19,17 +19,17 @@ const items = computed<NavigationMenuItem[]>(() => [
   {
     label: t('app.sidebar.dashboard'),
     icon: 'i-heroicons-chart-bar',
-    to: localePath('index'),
+    to: localePath('panel-dashboard'),
   },
   {
     label: t('app.sidebar.incomes'),
     icon: 'i-heroicons-banknotes',
-    to: localePath('incomes'),
+    to: localePath('panel-incomes'),
   },
   {
     label: t('app.sidebar.expenses'),
     icon: 'i-heroicons-credit-card',
-    to: localePath('expenses'),
+    to: localePath('panel-expenses'),
   },
 ])
 </script>
