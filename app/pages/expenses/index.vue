@@ -29,11 +29,10 @@ import type { Action } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
 import type { Filter } from '~/components/base/BaseFilters.vue'
 import type Expense from '#shared/models/expense'
-import type QueryParams from '#shared/models/query-params'
 
 const { t } = useI18n()
 const { $dialog } = useNuxtApp()
-const { title, addLabel, addRoute, headTitle, onEdit } = useCRUDL()
+const { addLabel, addRoute, headTitle, onEdit, params, title } = useCRUDL()
 const { expenses, loading, metadata } = storeToRefs(useExpensesStore())
 const { deleteExpense, fetchAllExpenses } = useExpensesStore()
 
@@ -79,8 +78,12 @@ const filters: Filter[] = [
   },
 ]
 
-function onApplyFilters(filters) {
-  console.log(filters)
+async function onApplyFilters(filters: any) {
+  params.page = 1
+  params.where = {
+    ...(filters.search ? { search: filters.search } : {}),
+  }
+  await fetchAllExpenses({ params })
 }
 
 async function onDelete(id: number) {
@@ -94,13 +97,11 @@ async function onDelete(id: number) {
 }
 
 async function onPageChange(page: number) {
-  const params: QueryParams = {
-    page,
-  }
+  params.page = page
   await fetchAllExpenses({ params })
 }
 
 onMounted(async () => {
-  await fetchAllExpenses()
+  await fetchAllExpenses({ params })
 })
 </script>

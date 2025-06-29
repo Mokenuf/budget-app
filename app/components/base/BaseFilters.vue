@@ -1,7 +1,7 @@
 <template>
   <UCollapsible class="group flex flex-col gap-2 mb-2" :unmount-on-hide="false">
     <UButton
-      :label="$t(label)"
+      :label="label"
       variant="subtle"
       color="neutral"
       trailing-icon="i-heroicons-chevron-down"

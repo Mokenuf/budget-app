@@ -28,12 +28,11 @@
 import type { Action } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
 import type Income from '#shared/models/income'
-import type QueryParams from '#shared/models/query-params'
 import type { Filter } from '~/components/base/BaseFilters.vue'
 
 const { t } = useI18n()
 const { $dialog } = useNuxtApp()
-const { title, addLabel, addRoute, headTitle, onEdit } = useCRUDL()
+const { addLabel, addRoute, headTitle, onEdit, params, title } = useCRUDL()
 const { incomes, loading, metadata } = storeToRefs(useIncomesStore())
 const { deleteIncome, fetchAllIncomes } = useIncomesStore()
 
@@ -79,8 +78,10 @@ const filters: Filter[] = [
   },
 ]
 
-function onApplyFilters(filters: any) {
-  console.log(filters)
+async function onApplyFilters(filters: any) {
+  params.page = 1
+  params.where = filters.search ? { search: filters.search } : null
+  await fetchAllIncomes({ params })
 }
 
 async function onDelete(id: number) {
@@ -94,9 +95,7 @@ async function onDelete(id: number) {
 }
 
 async function onPageChange(page: number) {
-  const params: QueryParams = {
-    page,
-  }
+  params.page = page
   await fetchAllIncomes({ params })
 }
 
