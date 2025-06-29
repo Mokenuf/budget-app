@@ -1,75 +1,75 @@
-# Nuxt Minimal Starter
+# Fran's Budget Tools 🧮
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+**Fran's Budget Tools** es una aplicación de presupuesto personal construida con tecnologías modernas como Nuxt 3, Pinia y Zod. Permite registrar **ingresos** y **expensas**, y calcula automáticamente tu **capacidad de ahorro mensual**, con una interfaz amigable y minimalista basada en Nuxt UI y Tailwind CSS.
 
-## Setup
+---
 
-Make sure to install dependencies:
+## 🚀 Tecnologías
+
+- [Nuxt 3](https://nuxt.com/) (`compatibilityVersion: 4`)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Pinia](https://pinia.vuejs.org/) – Gestión de estado
+- [Zod](https://zod.dev/) – Validación de formularios y datos
+- [Nuxt UI](https://ui.nuxt.com/) – Componentes UI
+- [Tailwind CSS](https://tailwindcss.com/) – Estilos utilitarios
+- [Nuxt i18n](https://i18n.nuxtjs.org/) – Internacionalización
+- [Husky + Lint Staged + Commitizen](https://typicode.github.io/husky/#/) – Workflow de commits y linting
+
+---
+
+## 📦 Instalación
+
+Cloná el repo y levantá el proyecto local:
 
 ```bash
-# npm
+git clone https://github.com/Mokenuf/budget-app.git
+cd budget-app
+
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+---
 
-Build the application for production:
+## 📂 Scripts útiles
 
-```bash
-# npm
-npm run build
+| Comando            | Descripción                                 |
+| ------------------ | ------------------------------------------- |
+| `npm run dev`      | Inicia el servidor de desarrollo            |
+| `npm run build`    | Compila la aplicación para producción       |
+| `npm run generate` | Genera sitio estático (SSG)                 |
+| `npm run lint`     | Ejecuta ESLint + Prettier                   |
+| `npm run lint:fix` | Aplica fixes automáticos de lint y prettier |
+| `npm run commit`   | Inicia flujo de commit con Commitizen       |
 
-# pnpm
-pnpm build
+---
 
-# yarn
-yarn build
+## 🧪 Estado actual
 
-# bun
-bun run build
-```
+- ✅ UI básica funcional
+- ✅ Registro y listado de **ingresos** y **expensas**
+- ✅ Cálculo automático de ahorro mensual
+- ✅ Estructura extensible con Pinia + Zod
+- ❌ Sin persistencia de datos todavía
 
-Locally preview production build:
+---
 
-```bash
-# npm
-npm run preview
+## 🔜 Próximos pasos
 
-# pnpm
-pnpm preview
+- [ ] **Integrar Supabase** como base de datos y autenticación
+- [ ] Crear server routes en Nuxt 3 (`/server/api`)
+- [ ] Permitir CRUD persistente de datos
+- [ ] Exportar reportes (PDF, Excel)
+- [ ] Agregar soporte para múltiples monedas
 
-# yarn
-yarn preview
+---
 
-# bun
-bun run preview
-```
+## 🤓 Motivación
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Este proyecto nace como un ejercicio personal para aplicar lo aprendido en mi trabajo diario con Vue 2, y llevarlo a un stack moderno basado en Nuxt 3. También sirve como base para experimentar con buenas prácticas, composables reutilizables y flujo de trabajo profesional en proyectos Vue.
+
+---
+
+## 📄 Licencia
+
+MIT – libre para usar, modificar y compartir.
