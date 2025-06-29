@@ -1,5 +1,14 @@
 {
   "app": {
+    "base": {
+      "date-picker": {
+        "placeholder": "Selecciona una fecha"
+      },
+      "filters": {
+        "submit": "Aplicar",
+        "reset": "Limpiar"
+      }
+    },
     "dashboard-card": {
       "expenses": "Expensas",
       "incomes": "Ingresos",
@@ -92,6 +101,11 @@
           }
         },
         "description": "Descripción",
+        "filters": {
+          "title": "Filtros",
+          "search": "Buscar",
+          "search-placeholder": "Buscar..."
+        },
         "id": "ID",
         "name": "Nombre",
         "title": "Expensas"
@@ -116,6 +130,11 @@
             "title": "Eliminar Ingreso",
             "message": "¿Estás seguro de querer eliminar este ingreso? Esta acción no se puede deshacer."
           }
+        },
+        "filters": {
+          "title": "Filtros",
+          "search": "Buscar",
+          "search-placeholder": "Buscar..."
         },
         "id": "ID",
         "name": "Nombre",

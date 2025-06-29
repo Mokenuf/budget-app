@@ -1,3 +1,5 @@
+import type QueryParams from '#shared/models/query-params'
+
 /**
  * Composable helper to handle CRUDL operations for a given entity.
  *
@@ -17,6 +19,10 @@ export function useCRUDL(entity?: string) {
   const { title: configTitle } = useAppConfig()
 
   const entityKey = entity || route.path.split('/')[1] || ''
+  const params = reactive<QueryParams>({
+    page: 1,
+    pageSize: 10,
+  })
 
   const addLabel = computed<string>(() => t(`pages.${entityKey}.index.add`))
   const addRoute = computed<string>(() => localePath(`${entityKey}-add`))
@@ -30,10 +36,11 @@ export function useCRUDL(entity?: string) {
   }
 
   return {
-    title,
     addLabel,
     addRoute,
     headTitle,
     onEdit,
+    params,
+    title,
   }
 }
