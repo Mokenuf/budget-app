@@ -6,6 +6,11 @@
       </h2>
       <UButton icon="i-heroicons-plus" :label="addLabel" :to="addRoute" />
     </div>
+    <BaseFilters
+      :filters
+      :label="$t('pages.incomes.index.filters.title')"
+      @submit="onApplyFilters"
+    />
     <BaseTable
       :rows="incomes"
       :metadata
@@ -23,11 +28,11 @@
 import type { Action } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
 import type Income from '#shared/models/income'
-import type QueryParams from '#shared/models/query-params'
+import type { Filter } from '~/components/base/BaseFilters.vue'
 
 const { t } = useI18n()
 const { $dialog } = useNuxtApp()
-const { title, addLabel, addRoute, headTitle, onEdit } = useCRUDL()
+const { addLabel, addRoute, headTitle, onEdit, params, title } = useCRUDL()
 const { incomes, loading, metadata } = storeToRefs(useIncomesStore())
 const { deleteIncome, fetchAllIncomes } = useIncomesStore()
 
@@ -63,6 +68,22 @@ const columns: TableColumn<Income>[] = [
   },
 ]
 
+const filters: Filter[] = [
+  {
+    name: 'search',
+    type: 'input',
+    label: 'pages.incomes.index.filters.search',
+    placeholder: 'pages.incomes.index.filters.search-placeholder',
+    icon: 'i-heroicons-magnifying-glass',
+  },
+]
+
+async function onApplyFilters(filters: any) {
+  params.page = 1
+  params.where = filters.search ? { search: filters.search } : null
+  await fetchAllIncomes({ params })
+}
+
 async function onDelete(id: number) {
   const response = await $dialog.confirm({
     title: 'pages.incomes.index.dialog.delete.title',
@@ -74,9 +95,7 @@ async function onDelete(id: number) {
 }
 
 async function onPageChange(page: number) {
-  const params: QueryParams = {
-    page,
-  }
+  params.page = page
   await fetchAllIncomes({ params })
 }
 
