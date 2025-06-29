@@ -6,25 +6,11 @@
       </h2>
       <UButton icon="i-heroicons-plus" :label="addLabel" :to="addRoute" />
     </div>
-    <UCollapsible
-      class="group flex flex-col gap-2 mb-2"
-      :unmount-on-hide="false"
-    >
-      <UButton
-        :label="$t('pages.expenses.index.filters.title')"
-        variant="subtle"
-        color="neutral"
-        trailing-icon="i-heroicons-chevron-down"
-        :ui="{
-          trailingIcon:
-            'group-data-[state=open]:rotate-180 transition-transform duration-200',
-        }"
-        block
-      />
-      <template #content>
-        <BaseFilters :filters @submit="onApplyFilters" />
-      </template>
-    </UCollapsible>
+    <BaseFilters
+      :filters
+      :label="$t('pages.expenses.index.filters.title')"
+      @submit="onApplyFilters"
+    />
     <BaseTable
       :rows="expenses"
       :metadata

@@ -6,6 +6,11 @@
       </h2>
       <UButton icon="i-heroicons-plus" :label="addLabel" :to="addRoute" />
     </div>
+    <BaseFilters
+      :filters
+      :label="$t('pages.incomes.index.filters.title')"
+      @submit="onApplyFilters"
+    />
     <BaseTable
       :rows="incomes"
       :metadata
@@ -24,6 +29,7 @@ import type { Action } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
 import type Income from '#shared/models/income'
 import type QueryParams from '#shared/models/query-params'
+import type { Filter } from '~/components/base/BaseFilters.vue'
 
 const { t } = useI18n()
 const { $dialog } = useNuxtApp()
@@ -62,6 +68,20 @@ const columns: TableColumn<Income>[] = [
     header: t('pages.incomes.index.description'),
   },
 ]
+
+const filters: Filter[] = [
+  {
+    name: 'search',
+    type: 'input',
+    label: 'pages.incomes.index.filters.search',
+    placeholder: 'pages.incomes.index.filters.search-placeholder',
+    icon: 'i-heroicons-magnifying-glass',
+  },
+]
+
+function onApplyFilters(filters: any) {
+  console.log(filters)
+}
 
 async function onDelete(id: number) {
   const response = await $dialog.confirm({

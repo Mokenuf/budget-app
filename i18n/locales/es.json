@@ -1,6 +1,9 @@
 {
   "app": {
     "base": {
+      "date-picker": {
+        "placeholder": "Selecciona una fecha"
+      },
       "filters": {
         "submit": "Aplicar",
         "reset": "Limpiar"
@@ -127,6 +130,11 @@
             "title": "Eliminar Ingreso",
             "message": "¿Estás seguro de querer eliminar este ingreso? Esta acción no se puede deshacer."
           }
+        },
+        "filters": {
+          "title": "Filtros",
+          "search": "Buscar",
+          "search-placeholder": "Buscar..."
         },
         "id": "ID",
         "name": "Nombre",

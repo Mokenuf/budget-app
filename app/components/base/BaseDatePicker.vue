@@ -1,12 +1,18 @@
 <template>
   <div>
     <UPopover>
-      <UButton icon="i-heroicons-calendar">
+      <UButton
+        class="cursor-pointer"
+        :class="buttonClass"
+        icon="i-heroicons-calendar"
+        variant="outline"
+        color="neutral"
+      >
         <template v-if="type === 'date'">
           {{
             dateValue
               ? df.format(dateValue.toDate(getLocalTimeZone()))
-              : $t(placeholder || '')
+              : $t(placeholder || 'app.base.date-picker.placeholder')
           }}
         </template>
         <template v-if="type === 'date-range'">
@@ -20,7 +26,7 @@
             </template>
           </template>
           <template v-else>
-            {{ $t(placeholder || '') }}
+            {{ $t(placeholder || 'app.base.date-picker.placeholder') }}
           </template>
         </template>
       </UButton>
@@ -30,6 +36,7 @@
           class="p-2"
           :number-of-months="type === 'date' ? 1 : 2"
           :range="type === 'date-range'"
+          :ui="{ cell: 'cursor-pointer' }"
         />
       </template>
     </UPopover>
@@ -48,6 +55,7 @@ interface DateRange {
 const { locale } = useI18n()
 
 const props = defineProps<{
+  buttonClass: string
   dateStyle: 'full' | 'long' | 'medium' | 'short'
   modelValue: CalendarDate | DateRange
   placeholder: string
@@ -67,9 +75,7 @@ const model = computed<CalendarDate | DateRange>({
   set: (value) => emit('update:modelValue', value),
 })
 const rangeValue = computed(() =>
-  props.type === 'date-range' && 'start' in props.modelValue
-    ? (props.modelValue as DateRange)
-    : null
+  props.type === 'date-range' ? (props.modelValue as DateRange) : null
 )
 
 const df = new DateFormatter(locale.value, {
