@@ -1,5 +1,11 @@
 {
   "app": {
+    "base": {
+      "filters": {
+        "submit": "Aplicar",
+        "reset": "Limpiar"
+      }
+    },
     "dashboard-card": {
       "expenses": "Expensas",
       "incomes": "Ingresos",
@@ -92,6 +98,11 @@
           }
         },
         "description": "Descripción",
+        "filters": {
+          "title": "Filtros",
+          "search": "Buscar",
+          "search-placeholder": "Buscar..."
+        },
         "id": "ID",
         "name": "Nombre",
         "title": "Expensas"

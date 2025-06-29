@@ -44,7 +44,7 @@ import type Metadata from '#shared/models/metadata'
 
 type ActionKey = 'edit' | 'delete' | 'view'
 
-export type Action = {
+export interface Action {
   key: ActionKey
   icon: string
 }

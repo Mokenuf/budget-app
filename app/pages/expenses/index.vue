@@ -6,6 +6,25 @@
       </h2>
       <UButton icon="i-heroicons-plus" :label="addLabel" :to="addRoute" />
     </div>
+    <UCollapsible
+      class="group flex flex-col gap-2 mb-2"
+      :unmount-on-hide="false"
+    >
+      <UButton
+        :label="$t('pages.expenses.index.filters.title')"
+        variant="subtle"
+        color="neutral"
+        trailing-icon="i-heroicons-chevron-down"
+        :ui="{
+          trailingIcon:
+            'group-data-[state=open]:rotate-180 transition-transform duration-200',
+        }"
+        block
+      />
+      <template #content>
+        <BaseFilters :filters @submit="onApplyFilters" />
+      </template>
+    </UCollapsible>
     <BaseTable
       :rows="expenses"
       :metadata
@@ -22,6 +41,7 @@
 <script setup lang="ts">
 import type { Action } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
+import type { Filter } from '~/components/base/BaseFilters.vue'
 import type Expense from '#shared/models/expense'
 import type QueryParams from '#shared/models/query-params'
 
@@ -62,6 +82,20 @@ const columns: TableColumn<Expense>[] = [
     header: t('pages.expenses.index.description'),
   },
 ]
+
+const filters: Filter[] = [
+  {
+    name: 'search',
+    type: 'input',
+    label: 'pages.expenses.index.filters.search',
+    placeholder: 'pages.expenses.index.filters.search-placeholder',
+    icon: 'i-heroicons-magnifying-glass',
+  },
+]
+
+function onApplyFilters(filters) {
+  console.log(filters)
+}
 
 async function onDelete(id: number) {
   const response = await $dialog.confirm({
