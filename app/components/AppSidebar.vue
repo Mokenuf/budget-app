@@ -31,5 +31,10 @@ const items = computed<NavigationMenuItem[]>(() => [
     icon: 'i-heroicons-credit-card',
     to: localePath('panel-expenses'),
   },
+  {
+    label: t('app.sidebar.logout'),
+    icon: 'i-heroicons-arrow-right-on-rectangle',
+    to: localePath('index'),
+  },
 ])
 </script>
