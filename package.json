@@ -25,6 +25,7 @@
     "zod": "^3.25.67"
   },
   "devDependencies": {
+    "@nuxt/image": "^1.10.0",
     "@nuxt/ui": "^3.2.0",
     "@nuxtjs/i18n": "^9.5.5",
     "@nuxtjs/supabase": "^1.5.3",

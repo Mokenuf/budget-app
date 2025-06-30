@@ -3,6 +3,7 @@
     <UTable
       :data="rows"
       :columns="columnsWithActions"
+      :empty="$t('app.base.table.empty')"
       :ui="{
         td: 'px-4 py-3 text-sm text-gray-300',
         th: 'px-4 py-3 text-sm text-left text-gray-400 uppercase',

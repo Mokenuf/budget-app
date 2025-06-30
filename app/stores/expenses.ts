@@ -36,7 +36,7 @@ export const useExpensesStore = defineStore('expenses', () => {
           title: t('store.expenses.create.success'),
           color: 'success',
         })
-        navigateTo(localePath('expenses'))
+        navigateTo(localePath('panel-expenses'))
       }
     } catch (error) {
       console.error(error)
@@ -125,7 +125,7 @@ export const useExpensesStore = defineStore('expenses', () => {
             title: t('store.expenses.update.success'),
             color: 'success',
           })
-          navigateTo(localePath('expenses'))
+          navigateTo(localePath('panel-expenses'))
         }
       }
     } catch (error) {

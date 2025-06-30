@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="text-2xl font-bold mb-2">
-      {{ $t('pages.incomes.add.title') }}
+      {{ $t('pages.panel.incomes.add.title') }}
     </h2>
     <FormIncome :loading @submit="onSubmit" />
   </div>

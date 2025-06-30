@@ -8,11 +8,11 @@
     </div>
     <BaseFilters
       :filters
-      :label="$t('pages.incomes.index.filters.title')"
+      :label="$t('pages.panel.expenses.index.filters.title')"
       @submit="onApplyFilters"
     />
     <BaseTable
-      :rows="incomes"
+      :rows="expenses"
       :metadata
       :columns
       :actions
@@ -27,14 +27,14 @@
 <script setup lang="ts">
 import type { Action } from '~/components/base/BaseTable.vue'
 import type { TableColumn } from '@nuxt/ui'
-import type Income from '#shared/models/income'
 import type { Filter } from '~/components/base/BaseFilters.vue'
+import type Expense from '#shared/models/expense'
 
 const { t } = useI18n()
 const { $dialog } = useNuxtApp()
 const { addLabel, addRoute, headTitle, onEdit, params, title } = useCRUDL()
-const { incomes, loading, metadata } = storeToRefs(useIncomesStore())
-const { deleteIncome, fetchAllIncomes } = useIncomesStore()
+const { expenses, loading, metadata } = storeToRefs(useExpensesStore())
+const { deleteExpense, fetchAllExpenses } = useExpensesStore()
 
 useHead({ title: headTitle })
 
@@ -49,22 +49,22 @@ const actions: Action[] = [
   },
 ]
 
-const columns: TableColumn<Income>[] = [
+const columns: TableColumn<Expense>[] = [
   {
     accessorKey: 'id',
-    header: t('pages.incomes.index.id'),
+    header: t('pages.panel.expenses.index.id'),
   },
   {
     accessorKey: 'name',
-    header: t('pages.incomes.index.name'),
+    header: t('pages.panel.expenses.index.name'),
   },
   {
     accessorKey: 'amount',
-    header: t('pages.incomes.index.amount'),
+    header: t('pages.panel.expenses.index.amount'),
   },
   {
     accessorKey: 'description',
-    header: t('pages.incomes.index.description'),
+    header: t('pages.panel.expenses.index.description'),
   },
 ]
 
@@ -72,34 +72,36 @@ const filters: Filter[] = [
   {
     name: 'search',
     type: 'input',
-    label: 'pages.incomes.index.filters.search',
-    placeholder: 'pages.incomes.index.filters.search-placeholder',
+    label: 'pages.panel.expenses.index.filters.search',
+    placeholder: 'pages.panel.expenses.index.filters.search-placeholder',
     icon: 'i-heroicons-magnifying-glass',
   },
 ]
 
 async function onApplyFilters(filters: any) {
   params.page = 1
-  params.where = filters.search ? { search: filters.search } : null
-  await fetchAllIncomes({ params })
+  params.where = {
+    ...(filters.search ? { search: filters.search } : {}),
+  }
+  await fetchAllExpenses({ params })
 }
 
 async function onDelete(id: number) {
   const response = await $dialog.confirm({
-    title: 'pages.incomes.index.dialog.delete.title',
-    message: 'pages.incomes.index.dialog.delete.message',
+    title: 'pages.panel.expenses.index.dialog.delete.title',
+    message: 'pages.panel.expenses.index.dialog.delete.message',
   })
   if (response) {
-    deleteIncome(id)
+    deleteExpense(id)
   }
 }
 
 async function onPageChange(page: number) {
   params.page = page
-  await fetchAllIncomes({ params })
+  await fetchAllExpenses({ params })
 }
 
 onMounted(async () => {
-  await fetchAllIncomes()
+  await fetchAllExpenses({ params })
 })
 </script>

@@ -7,6 +7,9 @@
       "filters": {
         "submit": "Aplicar",
         "reset": "Limpiar"
+      },
+      "table": {
+        "empty": "No hay datos"
       }
     },
     "dashboard-card": {
@@ -19,6 +22,52 @@
       "confirm": "Confirmar"
     },
     "form": {
+      "auth": {
+        "sign-in": {
+          "fields": {
+            "email": "Correo electrónico",
+            "email-invalid": "El correo electrónico no es válido",
+            "email-required": "El correo electrónico es requerido",
+            "email-placeholder": "Ingrese su correo electrónico...",
+            "password": "Contraseña",
+            "password-required": "La contraseña es requerida",
+            "password-placeholder": "Ingrese su contraseña..."
+          },
+          "forgot-password": "¿Olvidaste tu contraseña?",
+          "submit": "Iniciar Sesión"
+        },
+        "sign-up": {
+          "fields": {
+            "email": "Correo electrónico",
+            "email-invalid": "El correo electrónico no es válido",
+            "email-required": "El correo electrónico es requerido",
+            "email-placeholder": "Ingrese su correo electrónico...",
+            "password": "Contraseña",
+            "password-min-length": "La contraseña debe tener al menos 8 caracteres",
+            "password-number": "La contraseña debe tener al menos un número",
+            "password-lowercase": "La contraseña debe tener al menos una letra minúscula",
+            "password-uppercase": "La contraseña debe tener al menos una letra mayúscula",
+            "password-special": "La contraseña debe tener al menos un carácter especial",
+            "password-required": "La contraseña es requerida",
+            "password-placeholder": "Ingrese su contraseña...",
+            "confirm-password": "Confirmar contraseña",
+            "confirm-password-missmatch": "Las contraseñas no coinciden",
+            "confirm-password-required": "La confirmación de la contraseña es requerida",
+            "confirm-password-placeholder": "Repita su contraseña..."
+          },
+          "must-contain": "Debe cumplir",
+          "password-strength": {
+            "enter": "Ingrese una contraseña",
+            "weak": "La contraseña es débil",
+            "medium": "La contraseña es media",
+            "strong": "La contraseña es fuerte",
+            "met": "Requisito cumplido",
+            "not-met": "Requisito no cumplido"
+          },
+          "submit": "Registrarse",
+          "sign-in": "¿Ya tienes una cuenta? Inicia sesión"
+        }
+      },
       "expense": {
         "back": "Volver",
         "fields": {
@@ -66,7 +115,13 @@
     "sidebar": {
       "dashboard": "Dashboard",
       "expenses": "Expensas",
-      "incomes": "Ingresos"
+      "incomes": "Ingresos",
+      "logout": "Cerrar Sesión"
+    },
+    "splash": {
+      "logo-alt": "Budget Tool Logo",
+      "sign-in": "Iniciar Sesión",
+      "sign-up": "Registrarse"
     }
   },
   "catalogs": {
@@ -84,61 +139,71 @@
     }
   },
   "pages": {
-    "expenses": {
-      "add": {
-        "title": "Agregar Expensa"
+    "auth": {
+      "sign-in": {
+        "title": "Iniciar Sesión"
       },
-      "edit": {
-        "title": "Editar Expensa {id}"
-      },
-      "index": {
-        "add": "Agregar Expensa",
-        "amount": "Cantidad",
-        "dialog": {
-          "delete": {
-            "title": "Eliminar Expensa",
-            "message": "¿Estás seguro de querer eliminar esta expensa? Esta acción no se puede deshacer."
-          }
-        },
-        "description": "Descripción",
-        "filters": {
-          "title": "Filtros",
-          "search": "Buscar",
-          "search-placeholder": "Buscar..."
-        },
-        "id": "ID",
-        "name": "Nombre",
-        "title": "Expensas"
+      "sign-up": {
+        "title": "Registrarse"
       }
     },
-    "index": {
-      "title": "Dashboard"
-    },
-    "incomes": {
-      "add": {
-        "title": "Agregar Ingreso"
+    "panel": {
+      "dashboard": {
+        "title": "Dashboard"
       },
-      "edit": {
-        "title": "Editar Ingreso {id}"
+      "expenses": {
+        "add": {
+          "title": "Agregar Expensa"
+        },
+        "edit": {
+          "title": "Editar Expensa {id}"
+        },
+        "index": {
+          "add": "Agregar Expensa",
+          "amount": "Cantidad",
+          "dialog": {
+            "delete": {
+              "title": "Eliminar Expensa",
+              "message": "¿Estás seguro de querer eliminar esta expensa? Esta acción no se puede deshacer."
+            }
+          },
+          "description": "Descripción",
+          "filters": {
+            "title": "Filtros",
+            "search": "Buscar",
+            "search-placeholder": "Buscar..."
+          },
+          "id": "ID",
+          "name": "Nombre",
+          "title": "Expensas"
+        }
       },
-      "index": {
-        "add": "Agregar Ingreso",
-        "amount": "Cantidad",
-        "description": "Descripción",
-        "dialog": {
-          "delete": {
-            "title": "Eliminar Ingreso",
-            "message": "¿Estás seguro de querer eliminar este ingreso? Esta acción no se puede deshacer."
-          }
+      "incomes": {
+        "add": {
+          "title": "Agregar Ingreso"
         },
-        "filters": {
-          "title": "Filtros",
-          "search": "Buscar",
-          "search-placeholder": "Buscar..."
+        "edit": {
+          "title": "Editar Ingreso {id}"
         },
-        "id": "ID",
-        "name": "Nombre",
-        "title": "Ingresos"
+        "index": {
+          "add": "Agregar Ingreso",
+          "amount": "Cantidad",
+          "description": "Descripción",
+          "dialog": {
+            "delete": {
+              "title": "Eliminar Ingreso",
+              "message": "¿Estás seguro de querer eliminar este ingreso? Esta acción no se puede deshacer."
+            }
+          },
+          "filters": {
+            "title": "Filtros",
+            "search": "Buscar",
+            "search-placeholder": "Buscar..."
+          },
+          "id": "ID",
+          "name": "Nombre",
+          "title": "Ingresos"
+        }
       }
     }
   },
